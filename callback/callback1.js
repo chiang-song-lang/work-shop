@@ -7,7 +7,6 @@ let doWork = function (job, timer, callback) {
     }, timer);
   };
   
-
   // 刷牙 --> 吃早餐 --> 寫功課
   let dt = new Date();
   console.log(`Start ${dt.toISOString()}`);
@@ -16,11 +15,12 @@ let doWork = function (job, timer, callback) {
     let dt = new Date();
     console.log(`${result} at ${dt.toISOString()}`);
     doWork("吃早餐", 3000, (err, result) => {
+      let dt = new Date();
+      console.log(`${result} at ${dt.toISOString()}`);
+  
+      doWork("寫功課", 2000, (err, result) => {
         let dt = new Date();
         console.log(`${result} at ${dt.toISOString()}`);
-        doWork("寫功課", 2000, (err, result) => {
-            let dt = new Date();
-            console.log(`${result} at ${dt.toISOString()}`);
-        });
+      });
     });
-});
+  });
